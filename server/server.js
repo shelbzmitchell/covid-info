@@ -1,24 +1,28 @@
 /* app.js is the project's entry point */
-const axios = require("axios");
-
+// const router = express.Router();
 /*
  * Create express web server
  */
 const express = require("express");
 const app = express();
 const port = 5000;
+const cors = require("cors");
 
+//middleware
+app.use(express.json());
+app.use(cors());
+
+// routes
+app.use(express.urlencoded({ extended: true}));
+// const recoveries = require("./routes/api/recovery");
+
+//URLS to access API
+// app.use("api/recovery", recoveries)
 // axios call
 
-axios
-  .get("https://bing.com/covid/data")
-  .then((response) => {
-    console.log(response.data.totalRecovered);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
 
-app.listen(5000, () => {
+http: app.listen(5000, () => {
   console.log("server running on port 5000");
 });
+
+// module.exports = router;
